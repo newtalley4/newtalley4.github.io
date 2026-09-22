@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>缚乐园-沉浸式互动推理与生存游戏体验平台</title>
+    <meta name="description" content="缚乐园是一个专注于高品质互动推理、生存游戏与剧本杀体验的在线平台。提供沉浸式剧情、实时语音互动、策略性挑战及玩家社区交流，打造属于你的专属游戏乐园。">
+    <meta name="keywords" content="缚乐园, 互动推理, 剧本杀, 生存游戏, 在线桌游, 沉浸式体验">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --secondary-color: #34495e;
+            --bg-dark: #1a1a2e;
+            --bg-card: #16213e;
+            --text-light: #ecf0f1;
+            --text-gray: #bdc3c7;
+            --border-color: #2c3e50;
+            --font-main: "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", Arial, sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: var(--font-main);
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 60px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        .section-subtitle {
+            color: var(--text-gray);
+            font-size: 1rem;
+        }
+
+        /* Navigation */
+        header {
+            background-color: rgba(26, 26, 46, 0.95);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--border-color);
+            backdrop-filter: blur(10px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .btn-login {
+            padding: 8px 20px;
+            border: 1px solid var(--accent-color);
+            border-radius: 4px;
+            color: var(--accent-color);
+            font-weight: bold;
+        }
+
+        .btn-login:hover {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 600px;
+            background: linear-gradient(135deg, rgba(26, 26, 46, 0.8), rgba(44, 62, 80, 0.9)), 
+                        url('https://picsum.photos/seed/fantasy/1920/1080.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 30px;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            font-size: 1rem;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #c0392b;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        /* Features Section */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-card {
+            background-color: var(--bg-card);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-color);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: var(--accent-color);
+        }
+
+        .feature-card h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        .feature-card p {
+            color: var(--text-gray);
+            font-size: 0.95rem;
+        }
+
+        /* Game Categories */
+        .category-list {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .category-item {
+            position: relative;
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .category-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .category-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .category-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            padding: 20px;
+        }
+
+        .category-item h3 {
+            font-size: 1.2rem;
+        }
+
+        /* Active Games / Ranking */
+        .ranking-container {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+        }
+
+        .game-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .game-item {
+            display: flex;
+            background-color: var(--bg-card);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .game-thumb {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .game-info {
+            padding: 15px 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .game-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .game-meta {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            margin-bottom: 10px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .game-tags span {
+            background-color: rgba(255,255,255,0.1);
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .join-btn {
+            align-self: flex-start;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            padding: 5px 15px;
+            border: 1px solid var(--text-gray);
+            border-radius: 4px;
+        }
+
+        .join-btn:hover {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        /* Sidebar / Info */
+        .sidebar-box {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list li::before {
+            content: '•';
+            color: var(--accent-color);
+            margin-right: 8px;
+            font-size: 1.2rem;
+        }
+
+        /* FAQ */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            gap: 20px;
+        }
+
+        .faq-item {
+            background-color: var(--bg-card);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .faq-question {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--text-light);
+        }
+
+        .faq-answer {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0f0f1a;
+            padding: 50px 0 20px;
+            border-top: 1px solid var(--border-color);
+            margin-top: 60px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none; /* Simplified for mobile */
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+            .category-list {
+                grid-template-columns: 1fr 1fr;
+            }
+            .ranking-container {
+                grid-template-columns: 1fr;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">缚乐园</div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#games">游戏大厅</a></li>
+                    <li><a href="#categories">剧本分类</a></li>
+                    <li><a href="#community">玩家社区</a></li>
+                    <li><a href="#guide">新手指南</a></li>
+                </ul>
+                <a href="#" class="btn-login">登录 / 注册</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>缚乐园：打破次元壁的互动推理</h1>
+                <p>在这里，每一次选择都决定结局。体验最硬核的推理游戏，结识志同道合的玩家，在虚拟世界中寻找真实的刺激。</p>
+                <div class="cta-group">
+                    <button class="btn btn-primary">立即开始游戏</button>
+                    <button class="btn btn-secondary">浏览剧本库</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">为什么选择缚乐园</h2>
+                    <p class="section-subtitle">专为推理爱好者打造的沉浸式平台</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎭</div>
+                        <h3>沉浸式剧本</h3>
+                        <p>数百个原创与引进剧本，涵盖悬疑、恐怖、情感、机制等多种类型，支持文字与语音沉浸体验。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">👥</div>
+                        <h3>实时语音互动</h3>
+                        <p>告别枯燥打字，高清语音房间，支持DM（主持人）实时演绎，还原线下剧本杀的真实感。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🧠</div>
+                        <h3>智能辅助系统</h3>
+                        <p>内置线索检索、逻辑推导助手，为新手玩家提供引导，为高玩提供数据支持。</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🏆</div>
+                        <h3>排行榜与成就</h3>
+                        <p>记录你的推理历程，参与赛季排位，与全服玩家一较高下，赢取限定身份卡。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Categories Section -->
+        <section id="categories" class="section" style="background-color: #151e32;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">热门剧本分类</h2>
+                    <p class="section-subtitle">探索不同类型的推理乐趣</p>
+                </div>
+                <div class="category-list">
+                    <div class="category-item">
+                        <img src="https://picsum.photos/seed/mystery/400/300.jpg" alt="本格推理">
+                        <div class="category-overlay">
+                            <h3>本格推理</h3>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <img src="https://picsum.photos/seed/horror/400/300.jpg" alt="惊悚恐怖">
+                        <div class="category-overlay">
+                            <h3>惊悚恐怖</h3>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <img src="https://picsum.photos/seed/love/400/300.jpg" alt="情感沉浸">
+                        <div class="category-overlay">
+                            <h3>情感沉浸</h3>
+                        </div>
+                    </div>
+                    <div class="category-item">
+                        <img src="https://picsum.photos/seed/cyber/400/300.jpg" alt="科幻机甲">
+                        <div class="category-overlay">
+                            <h3>科幻机甲</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Active Games / Ranking Section -->
+        <section id="games" class="section">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">热门游戏大厅</h2>
+                    <p class="section-subtitle">当前正在进行的高人气场次</p>
+                </div>
+                <div class="ranking-container">
+                    <div class="game-list">
+                        <div class="game-item">
+                            <img src="https://picsum.photos/seed/game1/200/200.jpg" alt="游戏封面" class="game-thumb">
+                            <div class="game-info">
+                                <div class="game-title">《迷雾山庄》- 经典硬核本</div>
+                                <div class="game-meta">
+                                    <span>人数：6人</span>
+                                    <span>时长：4小时</span>
+                                    <span>难度：⭐⭐⭐⭐</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span>本格</span>
+                                    <span>推理</span>
+                                    <span>变格</span>
+                                </div>
+                                <button class="join-btn">加入队列</button>
+                            </div>
+                        </div>
+                        <div class="game-item">
+                            <img src="https://picsum.photos/seed/game2/200/200.jpg" alt="游戏封面" class="game-thumb">
+                            <div class="game-info">
+                                <div class="game-title">《深海遗孤》- 沉浸式情感</div>
+                                <div class="game-meta">
+                                    <span>人数：7人</span>
+                                    <span>时长：5小时</span>
+                                    <span>难度：⭐⭐⭐</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span>情感</span>
+                                    <span>变格</span>
+                                    <span>哭本</span>
+                                </div>
+                                <button class="join-btn">加入队列</button>
+                            </div>
+                        </div>
+                        <div class="game-item">
+                            <img src="https://picsum.photos/seed/game3/200/200.jpg" alt="游戏封面" class="game-thumb">
+                            <div class="game-info">
+                                <div class="game-title">《赛博2077：霓虹审判》- 科幻</div>
+                                <div class="game-meta">
+                                    <span>人数：8人</span>
+                                    <span>时长：4.5小时</span>
+                                    <span>难度：⭐⭐⭐⭐⭐</span>
+                                </div>
+                                <div class="game-tags">
+                                    <span>科幻</span>
+                                    <span>阵营</span>
+                                    <span>机制</span>
+                                </div>
+                                <button class="join-btn">加入队列</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <aside>
+                        <div class="sidebar-box">
+                            <h3 class="sidebar-title">新手须知</h3>
+                            <ul class="info-list">
+                                <li>如何选择适合自己的剧本？</li>
+                                <li>DM（主持人）的作用是什么？</li>
+                                <li>如何快速融入游戏节奏？</li>
+                                <li>遇到不良玩家如何举报？</li>
+                                <li>会员权益与免费体验时长</li>
+                            </ul>
+                            <button class="btn btn-secondary" style="width: 100%; margin-top: 20px; border: none; background: #2c3e50; color: white;">查看完整指南</button>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section" style="background-color: #151e32;">
+            <div class="container">
+                <div class="section-header">
+                    <h2 class="section-title">常见问题 (FAQ)</h2>
+                </div>
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <div class="faq-question">绑定手机号有什么用？</div>
+                        <div class="faq-answer">绑定手机号可以保障你的账号安全，方便找回密码，同时可以接收游戏开奖、活动通知等重要信息。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">游戏是否支持手机端游玩？</div>
+                        <div class="faq-answer">支持。缚乐园提供全平台适配，您可以在手机浏览器、微信小程序或电脑端浏览器流畅游玩。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">如何成为DM（主持人）？</div>
+                        <div class="faq-answer">DM需要通过平台的专业培训考试，考核通过后即可获得主持资格，赚取主持收益。</div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">游戏结算后可以查看复盘吗？</div>
+                        <div class="faq-answer">游戏结束后，如果剧本未设置隐藏结局，您可以随时在个人中心查看剧情复盘和凶手解析。</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 20px;">缚乐园</div>
+                    <p style="color: #666; font-size: 0.9rem;">致力于为推理爱好者提供最优质的在线游戏体验，让推理不再孤单。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">加入DM团队</a></li>
+                        <li><a href="#">商务合作</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>帮助中心</h4>
+                    <ul>
+                        <li><a href="#">用户协议</a></li>
+                        <li><a href="#">常见问题</a></li>
+                        <li><a href="#">联系客服</a></li>
+                        <li><a href="#">意见反馈</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关注我们</h4>
+                    <ul>
+                        <li><a href="#">微信公众号</a></li>
+                        <li><a href="#">官方微博</a></li>
+                        <li><a href="#">玩家QQ群</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 缚乐园. All Rights Reserved. 仅供展示使用，不涉及真实商业运营。
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
