@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="在那尽头 - 探索未知的边界，提供关于极地探险、深海探测、宇宙边缘及精神追寻的深度图文与视频记录。">
+    <meta name="keywords" content="在那尽头,探险,深海,极地,宇宙,未知">
+    <title>在那尽头-探索未知的边界与终极奥义</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-deep: #050508;
+            --bg-card: #0f1016;
+            --bg-card-hover: #1a1c26;
+            --text-main: #e0e0e0;
+            --text-muted: #8b9bb4;
+            --accent: #00f2ff;
+            --accent-dim: rgba(0, 242, 255, 0.1);
+            --border: #2a2e3a;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+            object-fit: cover;
+        }
+
+        /* Utility */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(5, 5, 8, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            height: 70px;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            min-height: 600px;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 0;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(5,5,8,0.3), var(--bg-deep)), 
+                        url('https://picsum.photos/seed/cosmos/1920/1080') center/cover no-repeat;
+            z-index: -1;
+            animation: slowZoom 20s infinite alternate;
+        }
+
+        @keyframes slowZoom {
+            from { transform: scale(1); }
+            to { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 20px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 30px rgba(0,0,0,0.8);
+            background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 32px;
+            background: transparent;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.3s ease;
+            z-index: -1;
+        }
+
+        .btn:hover {
+            color: var(--bg-deep);
+        }
+
+        .btn:hover::before {
+            left: 0;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+        }
+
+        /* Featured Grid */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            overflow: hidden;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent);
+        }
+
+        .card-image {
+            height: 240px;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s ease;
+        }
+
+        .card:hover .card-image img {
+            transform: scale(1.05);
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-tag {
+            font-size: 0.8rem;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+            line-height: 1.3;
+        }
+
+        .card-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+        }
+
+        .card-meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.85rem;
+            color: #556;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 15px;
+        }
+
+        /* Deep Dive Section */
+        .deep-dive {
+            background: linear-gradient(to right, #0f1016 0%, #0a0c12 100%);
+        }
+
+        .feature-row {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        .feature-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .feature-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .feature-image {
+            flex: 1;
+            height: 400px;
+            position: relative;
+        }
+
+        .feature-image img {
+            width: 100%;
+            height: 100%;
+            border-radius: 4px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+
+        .feature-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border: 1px solid var(--accent);
+            border-radius: 4px;
+            opacity: 0.3;
+        }
+
+        .feature-content {
+            flex: 1;
+        }
+
+        .feature-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        .feature-content p {
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--accent-dim);
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .quote-section blockquote {
+            font-size: 2rem;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto;
+            color: #fff;
+        }
+
+        .quote-section cite {
+            display: block;
+            margin-top: 20px;
+            font-size: 1rem;
+            color: var(--accent);
+            font-style: normal;
+        }
+
+        /* FAQ */
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #fff;
+        }
+
+        .faq-answer {
+            margin-top: 15px;
+            color: var(--text-muted);
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 60px 0 30px;
+            background: #020203;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: #fff;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .feature-row, .feature-row.reverse {
+                flex-direction: column;
+                gap: 30px;
+            }
+            .feature-image {
+                width: 100%;
+            }
+            .hero h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-inner nav {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: var(--bg-card);
+                flex-direction: column;
+                padding: 20px;
+                border-bottom: 1px solid var(--border);
+            }
+            .nav-inner nav.show {
+                display: flex;
+            }
+            .nav-inner nav ul {
+                flex-direction: column;
+                gap: 15px;
+            }
+            .mobile-menu-btn {
+                display: block;
+            }
+            .grid-3 {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-inner">
+            <a href="#" class="logo">
+                <span>///</span> 在那尽头
+            </a>
+            <button class="mobile-menu-btn" aria-label="菜单">☰</button>
+            <nav>
+                <ul>
+                    <li><a href="#explore" class="active">探索指南</a></li>
+                    <li><a href="#deep-dive">深度专题</a></li>
+                    <li><a href="#philosophy">哲学思考</a></li>
+                    <li><a href="#community">社区</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <h1>在那尽头，<br>是终结还是新生？</h1>
+                <p>我们致力于探索人类认知的边界，从极地冰原到宇宙深处，记录那些关于极限、未知与自我救赎的故事。</p>
+                <a href="#explore" class="btn">开始探索</a>
+            </div>
+        </section>
+
+        <!-- Explore Section -->
+        <section id="explore">
+            <div class="container">
+                <h2 class="section-title">探索指南</h2>
+                <div class="grid-3">
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/antarctica/600/400" alt="南极冰盖">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">极地</span>
+                            <h3 class="card-title">寂静的白色荒原</h3>
+                            <p class="card-excerpt">深入南极内陆，在零下60度的极寒中寻找生命的痕迹，以及冰川消融背后的全球气候警示。</p>
+                            <div class="card-meta">
+                                <span>阅读时间: 8分钟</span>
+                                <span>2023.10.15</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/abyss/600/400" alt="深海探测器">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">深海</span>
+                            <h3 class="card-title">马里亚纳的回响</h3>
+                            <p class="card-excerpt">乘坐深潜器下潜至万米海底，揭开深海热液喷口的神秘面纱，探索未知的生物群落。</p>
+                            <div class="card-meta">
+                                <span>阅读时间: 12分钟</span>
+                                <span>2023.11.02</span>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="card">
+                        <div class="card-image">
+                            <img src="https://picsum.photos/seed/stars/600/400" alt="星空观测">
+                        </div>
+                        <div class="card-content">
+                            <span class="card-tag">宇宙</span>
+                            <h3 class="card-title">光年之外的凝视</h3>
+                            <p class="card-excerpt">通过射电望远镜观测宇宙边缘，探讨大爆炸理论后的寂静，以及寻找地外文明的可能。</p>
+                            <div class="card-meta">
+                                <span>阅读时间: 15分钟</span>
+                                <span>2023.12.01</span>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quote Section -->
+        <section class="quote-section">
+            <div class="container">
+                <blockquote>
+                    “人类的伟大之处，不在于征服自然，而在于永远试图抵达那不可抵达的尽头。”
+                </blockquote>
+                <cite>— 《在那尽头》编委会</cite>
+            </div>
+        </section>
+
+        <!-- Deep Dive Section -->
+        <section id="deep-dive" class="deep-dive">
+            <div class="container">
+                <h2 class="section-title">深度专题</h2>
+                
+                <div class="feature-row">
+                    <div class="feature-image">
+                        <img src="https://picsum.photos/seed/mountain/800/600" alt="珠穆朗玛峰">
+                    </div>
+                    <div class="feature-content">
+                        <h3>垂直的极限：攀登者的灵魂</h3>
+                        <p>当海拔突破8000米，人体机能面临极限挑战。这不仅仅是关于氧气和体能的较量，更是关于心理防线崩溃与重建的生死时刻。本文回顾了近年来几次重大攀登事件，探讨人类为何要向死亡挑战。</p>
+                        <a href="#" class="btn">阅读全文</a>
+                    </div>
+                </div>
+
+                <div class="feature-row reverse">
+                    <div class="feature-image">
+                        <img src="https://picsum.photos/seed/tech/800/600" alt="量子计算">
+                    </div>
+                    <div class="feature-content">
+                        <h3>量子纠缠：现实的重构</h3>
+                        <p>在微观世界里，两个粒子可以跨越光年瞬间感应。这种违背经典物理学的“在那尽头”的连接，正在重塑我们对现实、时间和因果关系的理解。科技与哲学的交汇点。</p>
+                        <a href="#" class="btn">阅读全文</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Philosophy Section -->
+        <section id="philosophy">
+            <div class="container">
+                <h2 class="section-title">哲学思考</h2>
+                <div class="grid-3">
+                    <article>
+                        <h3>存在主义的尽头</h3>
+                        <p style="color:var(--text-muted); margin-top:10px;">萨特与加缪关于自由与荒谬的对话，在极端环境下是否依然成立？</p>
+                    </article>
+                    <article>
+                        <h3>熵增定律与宇宙热寂</h3>
+                        <p style="color:var(--text-muted); margin-top:10px;">万物终将归于混乱与寂静，人类的文明之光如何对抗不可逆转的衰退？</p>
+                    </article>
+                    <article>
+                        <h3>虚拟与现实的边界</h3>
+                        <p style="color:var(--text-muted); margin-top:10px;">当意识上传成为可能，我们追求的“在那尽头”究竟是真实的自由，还是数据的囚笼？</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" style="background-color: #08090c;">
+            <div class="container" style="max-width: 800px;">
+                <h2 class="section-title">常见问题</h2>
+                
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>“在那尽头”代表什么含义？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        “在那尽头”是一个隐喻，既指代物理空间上的绝对极限（如宇宙边缘、地心深处），也指代人类精神探索的终极彼岸。它象征着未知、探索以及人类对未知的永恒渴望。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>如何参与我们的探险计划？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        我们目前主要通过网络平台发布深度图文和视频内容。虽然我们尚未开展大规模实地探险，但我们欢迎所有对探索、科学和哲学感兴趣的朋友加入社区，分享您的见解。
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <div class="faq-question">
+                        <span>内容是否基于科学事实？</span>
+                        <span class="faq-icon">▼</span>
+                    </div>
+                    <div class="faq-answer">
+                        是的，我们的所有深度专题文章均经过严谨的学术引用和科学顾问审核，确保在传达宏大叙事的同时，不偏离客观事实。
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="#" class="logo" style="margin-bottom: 20px; display:inline-block;">
+                        <span>///</span> 在那尽头
+                    </a>
+                    <p>致力于探索人类认知的边界，记录未知，启迪思考。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>探索领域</h4>
+                    <ul>
+                        <li><a href="#">极地探险</a></li>
+                        <li><a href="#">深海探测</a></li>
+                        <li><a href="#">太空旅行</a></li>
+                        <li><a href="#">极限运动</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>关于我们</h4>
+                    <ul>
+                        <li><a href="#">编辑团队</a></li>
+                        <li><a href="#">合作伙伴</a></li>
+                        <li><a href="#">加入我们</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>订阅更新</h4>
+                    <p style="margin-bottom: 10px; font-size: 0.85rem;">获取最新的探索资讯与深度文章。</p>
+                    <input type="email" placeholder="您的邮箱地址" style="width: 100%; padding: 8px; background: #1a1c26; border: 1px solid var(--border); color: #fff;">
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 在那尽头 探索平台. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        const menuBtn = document.querySelector('.mobile-menu-btn');
+        const nav = document.querySelector('nav');
+
+        menuBtn.addEventListener('click', () => {
+            nav.classList.toggle('show');
+        });
+
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Close other items
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Toggle current item
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth Scroll for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                nav.classList.remove('show'); // Close mobile menu on click
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    const headerOffset = 70;
+                    const elementPosition = targetElement.getBoundingClientRect().top;
+                    const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: "smooth"
+                    });
+                }
+            });
+        });
+
+        // Header Scroll Effect
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(5, 5, 8, 0.95)';
+                header.style.boxShadow = '0 2px 10px rgba(0,0,0,0.5)';
+            } else {
+                header.style.background = 'rgba(5, 5, 8, 0.9)';
+                header.style.boxShadow = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
