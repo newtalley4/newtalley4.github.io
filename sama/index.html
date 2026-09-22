@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>samael唯唤古蛇-暗黑神话传说与奇幻生物图鉴</title>
+    <meta name="description" content="samael唯唤古蛇专题页，汇集关于古蛇神话、深渊召唤仪式、暗黑魔法传说及相关奇幻生物图鉴资料。提供详细的生物习性、魔法属性解析及世界观背景介绍。">
+    <meta name="keywords" content="samael唯唤古蛇,古蛇,暗黑神话,奇幻生物,深渊召唤,魔法图鉴">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --bg-deep: #0a0b0e;
+            --bg-card: #14161f;
+            --bg-card-hover: #1c1f2b;
+            --text-main: #e0e0e0;
+            --text-muted: #8b9bb4;
+            --accent-gold: #d4af37;
+            --accent-red: #8b0000;
+            --accent-purple: #4b0082;
+            --font-serif: 'Georgia', 'Times New Roman', serif;
+            --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--bg-deep);
+            color: var(--text-main);
+            font-family: var(--font-sans);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-accent { color: var(--accent-gold); }
+        .text-muted { color: var(--text-muted); }
+
+        /* Typography */
+        h1, h2, h3, h4 {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, #d4af37, #8b0000);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: 2px;
+        }
+
+        h2 {
+            font-size: 2.2rem;
+            margin-bottom: 2rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin: 10px auto 0;
+        }
+
+        /* Header & Nav */
+        header {
+            background: rgba(10, 11, 14, 0.95);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--text-main);
+            letter-spacing: 1px;
+        }
+
+        .logo span { color: var(--accent-gold); }
+
+        nav ul {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-gold);
+        }
+
+        nav a::before {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::before { width: 100%; }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(75, 0, 130, 0.3) 0%, var(--bg-deep) 70%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            animation: fadeIn 1.5s ease-out;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .hero-desc {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 35px;
+            background: transparent;
+            border: 1px solid var(--accent-gold);
+            color: var(--accent-gold);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            background: var(--accent-gold);
+            color: var(--bg-deep);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.4);
+        }
+
+        /* Info Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-gold);
+        }
+
+        .info-icon {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-red);
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-family: var(--font-sans);
+        }
+
+        .info-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Legend Section */
+        .legend-section {
+            background: linear-gradient(to bottom, var(--bg-deep), #0f0f12);
+        }
+
+        .legend-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .legend-text h2 {
+            text-align: left;
+        }
+        
+        .legend-text h2::after {
+            margin: 10px 0 0 0;
+        }
+
+        .legend-text p {
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+        }
+
+        .legend-image {
+            position: relative;
+            height: 500px;
+            background: radial-gradient(circle, rgba(139, 0, 0, 0.2), transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+        }
+
+        .legend-image::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border: 1px solid var(--accent-red);
+            opacity: 0.3;
+            transform: rotate(45deg);
+        }
+
+        .snake-silhouette {
+            font-size: 15rem;
+            color: rgba(255, 255, 255, 0.05);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Attributes Table */
+        .attributes-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .attributes-table th, .attributes-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .attributes-table th {
+            color: var(--accent-gold);
+            font-family: var(--font-sans);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1px;
+        }
+
+        .attributes-table td {
+            color: var(--text-muted);
+        }
+
+        /* Interactive Scroll Trigger */
+        .trigger-section {
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .trigger-text {
+            text-align: center;
+            z-index: 2;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 60px 0 30px;
+            background: #08090c;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: 1.5rem;
+            font-family: var(--font-sans);
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--accent-gold);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            h2 { font-size: 1.8rem; }
+            .nav-container { flex-direction: column; height: auto; padding: 15px 0; }
+            nav ul { margin-top: 15px; gap: 15px; flex-wrap: wrap; justify-content: center; }
+            .legend-layout { grid-template-columns: 1fr; }
+            .legend-image { height: 300px; }
+            .snake-silhouette { font-size: 8rem; }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-container">
+            <div class="logo">samael<span>唯唤古蛇</span></div>
+            <nav>
+                <ul>
+                    <li><a href="#home" class="active">起源</a></li>
+                    <li><a href="#legend">传说</a></li>
+                    <li><a href="#attributes">图鉴</a></li>
+                    <li><a href="#ritual">仪式</a></li>
+                    <li><a href="#faq">禁忌</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <div class="hero-bg"></div>
+            <div class="hero-content">
+                <div class="hero-subtitle">The Ancient Serpent of Samael</div>
+                <h1>samael唯唤古蛇</h1>
+                <p class="hero-desc">在古老的神话与暗黑奇幻的世界观中，samael唯唤古蛇代表着混沌、诱惑与深渊的终极力量。探索关于古蛇的起源、魔法属性以及召唤者必须知晓的知识。</p>
+                <a href="#legend" class="btn">开始探索</a>
+            </div>
+        </section>
+
+        <!-- Intro Cards -->
+        <section class="section-padding">
+            <div class="container">
+                <div class="info-grid">
+                    <article class="info-card">
+                        <div class="info-icon">🐍</div>
+                        <h3>混沌之源</h3>
+                        <p>古蛇被视为世界诞生前的原始混沌体，缠绕在时间与空间的边缘，它的每一次呼吸都影响着现实世界的法则。</p>
+                    </article>
+                    <article class="info-card">
+                        <div class="info-icon">👁️</div>
+                        <h3>全视之眼</h3>
+                        <p>古蛇拥有看穿一切伪装与谎言的能力，在许多传说中，它象征着对知识与真相的残酷索求。</p>
+                    </article>
+                    <article class="info-card">
+                        <div class="info-icon">🔮</div>
+                        <h3>深渊契约</h3>
+                        <p>召唤古蛇往往需要付出巨大的代价。它不提供简单的帮助，而是通过复杂的契约交换力量与知识。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legend Section -->
+        <section id="legend" class="section-padding legend-section">
+            <div class="container">
+                <div class="legend-layout">
+                    <div class="legend-text">
+                        <h2>神话谱系</h2>
+                        <p>在古老的宗教文本与隐秘的魔法文献中，samael（撒麦尔）常被描述为死亡天使或诱惑之灵。当这种神性堕落为纯粹的混沌实体时，便化身为“唯唤古蛇”。它并非普通的爬行动物，而是无数个世纪以来被诅咒灵魂与黑暗魔力凝聚而成的活体神话。</p>
+                        <p>传说古蛇拥有三颗头颅：分别象征过去、现在与未来。它盘踞在“静默之树”的根部，树根触及凡间，树冠直抵天界，古蛇正是维持两者平衡的锚点。</p>
+                        <a href="#attributes" class="btn" style="border-color: var(--accent-red); color: var(--accent-red);">查看详细图鉴</a>
+                    </div>
+                    <div class="legend-image">
+                        <div class="snake-silhouette">◎</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Attributes Table -->
+        <section id="attributes" class="section-padding">
+            <div class="container">
+                <div class="text-center">
+                    <h2>生物图鉴数据</h2>
+                    <p class="text-muted" style="max-width: 600px; margin: 0 auto 3rem;">基于典籍记录的samael唯唤古蛇基础属性分析</p>
+                </div>
+                
+                <div style="background: var(--bg-card); padding: 40px; border: 1px solid rgba(255,255,255,0.05);">
+                    <table class="attributes-table">
+                        <thead>
+                            <tr>
+                                <th>属性名称</th>
+                                <th>数值/描述</th>
+                                <th>备注</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th>栖息地</th>
+                                <td>深渊裂缝 / 异次元夹缝</td>
+                                <td>普通物理手段无法触及</td>
+                            </tr>
+                            <tr>
+                                <th>体型规模</th>
+                                <td>无限可变 / 涵盖整个维度</td>
+                                <td>在现实投影中通常表现为巨蛇形态</td>
+                            </tr>
+                            <tr>
+                                <th>魔法属性</th>
+                                <td>暗黑 / 精神控制 / 诅咒</td>
+                                <td>核心元素为黑色魔力</td>
+                            </tr>
+                            <tr>
+                                <th>弱点</th>
+                                <td>神圣之光 / 纯粹的理智</td>
+                                <td>纯粹的物理攻击效果甚微</td>
+                            </tr>
+                            <tr>
+                                <th>召唤难度</th>
+                                <td>极高 (SSS级)</td>
+                                <td>通常需要献祭大量能量或特殊媒介</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive/Atmospheric Section -->
+        <section class="trigger-section">
+            <div class="container trigger-text">
+                <h2 class="text-accent">“在深渊凝视你之前，先看清你的灵魂。”</h2>
+                <p class="text-muted" style="margin-top: 1rem;">—— 古蛇的低语</p>
+            </div>
+        </section>
+
+        <!-- FAQ / Taboos -->
+        <section id="faq" class="section-padding" style="background: var(--bg-card);">
+            <div class="container">
+                <h2 class="text-center">禁忌与警示</h2>
+                <div class="info-grid" style="margin-top: 3rem;">
+                    <div class="info-card" style="border-left: 4px solid var(--accent-red);">
+                        <h3>禁忌一：不可直视真身</h3>
+                        <p>凡人试图用肉眼直视samael唯唤古蛇的本体，往往会导致精神崩溃或灵魂被吞噬，转化为新的蛇鳞。</p>
+                    </div>
+                    <div class="info-card" style="border-left: 4px solid var(--accent-red);">
+                        <h3>禁忌二：契约不可反悔</h3>
+                        <p>一旦与古蛇达成契约，任何试图通过常规魔法手段解除的行为都会被视为背叛，招致毁灭性的反噬。</p>
+                    </div>
+                    <div class="info-card" style="border-left: 4px solid var(--accent-red);">
+                        <h3>禁忌三：水源禁忌</h3>
+                        <p>古蛇厌恶流动的清水，任何试图用纯净水源净化古蛇力量残留的仪式，都会引发剧烈的元素冲突。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="logo" style="margin-bottom: 1rem;">samael唯唤古蛇</div>
+                    <p class="text-muted" style="font-size: 0.9rem;">致力于记录与传播暗黑神话、奇幻生物及魔法传说文化的专题平台。</p>
+                </div>
+                <div class="footer-col">
+                    <h4>探索</h4>
+                    <ul>
+                        <li><a href="#home">起源传说</a></li>
+                        <li><a href="#legend">神话故事</a></li>
+                        <li><a href="#attributes">图鉴资料</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>社区</h4>
+                    <ul>
+                        <li><a href="#">神秘学论坛</a></li>
+                        <li><a href="#">传说投稿</a></li>
+                        <li><a href="#">志愿者招募</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>法律</h4>
+                    <ul>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">版权信息</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 samael唯唤古蛇专题站. All Rights Reserved. 本站内容仅供文化研究参考，请勿进行现实中的非法召唤活动。
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
